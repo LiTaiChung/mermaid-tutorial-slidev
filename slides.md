@@ -462,9 +462,59 @@ layout: fact
 
 # 實戰範例：使用者登入流程
 
-<div class="grid grid-cols-5 gap-6 pt-2">
+<div class="text-sm opacity-60 pb-3">左邊是原始碼（按空白鍵逐行解說），右邊是實際產生的流程圖</div>
 
-<div class="col-span-3 min-w-0 overflow-hidden p-4 rounded-lg border border-emerald-500/30 bg-emerald-500/[0.03]">
+<div class="grid grid-cols-2 gap-6">
+
+<div>
+
+```yaml {all|1|2|3|4|5|6|7|all}
+graph TD
+  A(["使用者開啟 App"]) --> B["輸入帳號密碼"]
+  B --> C{"驗證通過?"}
+  C -->|是| D["進入首頁"]
+  C -->|否| E["顯示錯誤訊息"]
+  E --> B
+  D --> F(["結束"])
+```
+
+<div class="pt-3 min-h-[9rem]">
+
+<div v-click="[1,2]" class="p-2 rounded-lg bg-white/[0.03] border-l-2 border-teal-400 text-xs">
+<code class="text-teal-300">graph TD</code>
+<span class="opacity-70 pl-2">宣告流程圖，方向由上而下</span>
+</div>
+
+<div v-click="[2,3]" class="p-2 rounded-lg bg-white/[0.03] border-l-2 border-sky-400 text-xs">
+<code class="text-sky-300">A(["..."]) --> B["..."]</code>
+<span class="opacity-70 pl-2">起點（膠囊）連到一般步驟</span>
+</div>
+
+<div v-click="[3,4]" class="p-2 rounded-lg bg-white/[0.03] border-l-2 border-amber-400 text-xs">
+<code class="text-amber-300">B --> C&#123;"..."&#125;</code>
+<span class="opacity-70 pl-2">連到菱形 — 判斷節點</span>
+</div>
+
+<div v-click="[4,6]" class="p-2 rounded-lg bg-white/[0.03] border-l-2 border-emerald-400 text-xs">
+<code class="text-emerald-300">C --&gt;&#124;是&#124; D</code> / <code class="text-rose-300">&#124;否&#124; E</code>
+<span class="opacity-70 pl-2">兩條帶標籤的分支</span>
+</div>
+
+<div v-click="[6,7]" class="p-2 rounded-lg bg-white/[0.03] border-l-2 border-rose-400 text-xs">
+<code class="text-rose-300">E --> B</code>
+<span class="opacity-70 pl-2">錯誤回到輸入 — 形成迴圈</span>
+</div>
+
+<div v-click="[7,8]" class="p-2 rounded-lg bg-white/[0.03] border-l-2 border-purple-400 text-xs">
+<code class="text-purple-300">D --> F([...])</code>
+<span class="opacity-70 pl-2">終點（膠囊）</span>
+</div>
+
+</div>
+
+</div>
+
+<div class="min-w-0 overflow-hidden p-4 rounded-lg border border-emerald-500/30 bg-emerald-500/[0.03] flex items-center justify-center">
 
 ```mermaid {scale: 0.7}
 graph TD
@@ -475,43 +525,6 @@ graph TD
   E --> B
   D --> F(["結束"])
 ```
-
-</div>
-
-<div class="col-span-2 text-sm">
-
-<div class="flex items-center gap-2 text-xs tracking-widest text-emerald-300 uppercase pb-3 font-mono">
-<ph:magnifying-glass-duotone />重點觀察
-</div>
-
-<v-clicks>
-
-<div class="pb-2 flex gap-2">
-  <div class="text-emerald-400">▸</div>
-  <div>起點／終點用 <code>([ ])</code> <b>膠囊</b>形狀</div>
-</div>
-
-<div class="pb-2 flex gap-2">
-  <div class="text-emerald-400">▸</div>
-  <div>判斷用 <code>{ }</code> <b>菱形</b></div>
-</div>
-
-<div class="pb-2 flex gap-2">
-  <div class="text-emerald-400">▸</div>
-  <div>箭頭標籤 <code>|是|</code>、<code>|否|</code> 標示分支</div>
-</div>
-
-<div class="pb-2 flex gap-2">
-  <div class="text-emerald-400">▸</div>
-  <div><code>E --> B</code> 形成<b>迴圈</b>：錯誤就回到輸入</div>
-</div>
-
-<div class="pb-2 flex gap-2">
-  <div class="text-emerald-400">▸</div>
-  <div>整張圖只用了 <b class="text-emerald-300">6 行程式碼</b></div>
-</div>
-
-</v-clicks>
 
 </div>
 
