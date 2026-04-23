@@ -1,637 +1,1002 @@
 ---
-# try also 'default' to start simple
-theme: seriph
-# random image from a curated Unsplash collection by Anthony
-# like them? see https://unsplash.com/collections/94734566/slidev
-background: https://cover.sli.dev
-# some information about your slides (markdown enabled)
-title: Welcome to Slidev
+theme: default
+title: Mermaid 零基礎入門
 info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
-
-  Learn more at [Sli.dev](https://sli.dev)
-# apply UnoCSS classes to the current slide
+  ## Mermaid 零基礎入門
+  用文字畫出流程圖、甘特圖與心智圖
 class: text-center
-# https://sli.dev/features/drawing
 drawings:
   persist: false
-# slide transition: https://sli.dev/guide/animations.html#slide-transitions
-transition: slide-left
-# enable Comark Syntax: https://comark.dev/syntax/markdown
-comark: true
-# duration of the presentation
-duration: 35min
+transition: view-transition
+mdc: true
+fonts:
+  sans: 'Inter, Noto Sans TC'
+  serif: 'Noto Serif TC'
+  mono: 'JetBrains Mono'
+colorSchema: dark
 ---
 
-# Welcome to Slidev
+<div class="absolute inset-0 bg-[#0b1220]"></div>
 
-Presentation slides for developers
+<div class="relative z-10">
 
-<div @click="$slidev.nav.next" class="mt-12 py-1" hover:bg="white op-10">
-  Press Space for next page <carbon:arrow-right />
+<div class="flex justify-center mb-6">
+  <ph:flow-arrow-duotone class="text-8xl text-teal-400" />
 </div>
 
-<div class="abs-br m-6 text-xl">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="slidev-icon-btn">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" class="slidev-icon-btn">
-    <carbon:logo-github />
-  </a>
+# Mermaid
+
+<div class="text-2xl font-light opacity-80 -mt-2">
+從零開始的圖表語法課
 </div>
 
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
+<div class="pt-10 flex justify-center gap-8 text-sm opacity-70">
+  <div class="flex items-center gap-2">
+    <ph:flow-arrow class="text-lg" />
+    <span>Flowchart</span>
+  </div>
+  <div class="flex items-center gap-2">
+    <ph:calendar-dots class="text-lg" />
+    <span>Gantt</span>
+  </div>
+  <div class="flex items-center gap-2">
+    <ph:tree-structure class="text-lg" />
+    <span>Mindmap</span>
+  </div>
+  <div class="flex items-center gap-2">
+    <ph:chart-pie-slice class="text-lg" />
+    <span>Pie</span>
+  </div>
+</div>
 
----
-transition: fade-out
----
+<div class="pt-20 text-xs opacity-50 tracking-widest">
+  按 <kbd class="border border-white/20 rounded px-1.5 py-0.5">Space</kbd> 開始
+</div>
 
-# What is Slidev?
-
-Slidev is a slides maker and presenter designed for developers, consist of the following features
-
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - themes can be shared and re-used as npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embed Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export to PDF, PPTX, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - virtually anything that's possible on a webpage is possible in Slidev
-<br>
-<br>
-
-Read more about [Why Slidev?](https://sli.dev/guide/why)
-
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/features/slide-scope-style
--->
+</div>
 
 <style>
 h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
+  font-size: 7rem !important;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #f1f5f9;
+  line-height: 1;
 }
 </style>
 
-<!--
-Here is another comment.
--->
-
 ---
-transition: slide-up
-level: 2
+layout: two-cols-header
 ---
 
-# Navigation
+# 課程地圖
 
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/ui#navigation-bar)
+<div class="text-sm opacity-60">這堂課會帶你走過的四個階段</div>
 
-## Keyboard Shortcuts
+::left::
 
-|                                                     |                             |
-| --------------------------------------------------- | --------------------------- |
-| <kbd>right</kbd> / <kbd>space</kbd>                 | next animation or slide     |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd>                                       | previous slide              |
-| <kbd>down</kbd>                                     | next slide                  |
+<div class="pr-4 space-y-3 pt-4">
 
-<!-- https://sli.dev/guide/animations.html#click-animation -->
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-  alt=""
-/>
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
+<div class="flex items-center gap-4 p-3 rounded-lg bg-white/5 border-l-2 border-teal-400">
+  <ph:number-circle-one-duotone class="text-4xl text-teal-400 shrink-0" />
+  <div>
+    <div class="font-bold">認識 Mermaid</div>
+    <div class="text-xs opacity-60">為什麼值得學</div>
+  </div>
+</div>
 
----
-layout: two-cols
-layoutClass: gap-16
----
+<div class="flex items-center gap-4 p-3 rounded-lg bg-white/5 border-l-2 border-sky-400">
+  <ph:number-circle-two-duotone class="text-4xl text-sky-400 shrink-0" />
+  <div>
+    <div class="font-bold">Flowchart 流程圖</div>
+    <div class="text-xs opacity-60">主力單元</div>
+  </div>
+</div>
 
-# Table of contents
-
-You can use the `Toc` component to generate a table of contents for your slides:
-
-```html
-<Toc minDepth="1" maxDepth="1" />
-```
-
-The title will be inferred from your slide content, or you can override it with `title` and `level` in your frontmatter.
+</div>
 
 ::right::
 
-<Toc text-sm minDepth="1" maxDepth="2" />
+<div class="pl-4 space-y-3 pt-4">
+
+<div class="flex items-center gap-4 p-3 rounded-lg bg-white/5 border-l-2 border-amber-400">
+  <ph:number-circle-three-duotone class="text-4xl text-amber-400 shrink-0" />
+  <div>
+    <div class="font-bold">Gantt 甘特圖</div>
+    <div class="text-xs opacity-60">專案排程</div>
+  </div>
+</div>
+
+<div class="flex items-center gap-4 p-3 rounded-lg bg-white/5 border-l-2 border-rose-400">
+  <ph:number-circle-four-duotone class="text-4xl text-rose-400 shrink-0" />
+  <div>
+    <div class="font-bold">Mindmap &amp; Pie</div>
+    <div class="text-xs opacity-60">心智圖與圓餅圖</div>
+  </div>
+</div>
+
+</div>
+
+---
+layout: section
+class: text-left
+---
+
+<div class="text-teal-400 text-xs tracking-[0.3em] mb-4 font-mono">CHAPTER · 01</div>
+
+# 認識 Mermaid
+
+<div class="text-lg opacity-60 mt-4 font-light">
+一種用「寫字」畫圖的語言
+</div>
+
+<div class="absolute bottom-10 right-10 opacity-20">
+  <ph:flow-arrow-duotone class="text-[16rem] text-teal-400" />
+</div>
+
+---
+layout: statement
+---
+
+<div class="text-3xl font-light leading-relaxed max-w-3xl">
+如果你能用<span class="text-teal-400 font-medium">五行文字</span>，<br>
+畫出一張會自己排版的流程圖 —
+</div>
+
+<div class="text-lg opacity-60 mt-10 font-mono">
+這就是 Mermaid 在做的事。
+</div>
+
+---
+
+# 傳統工具 vs. Mermaid
+
+<div class="grid grid-cols-2 gap-6 pt-6">
+
+<div class="p-5 rounded-lg bg-white/[0.03] border border-white/10">
+
+<div class="flex items-center gap-3 mb-4">
+  <ph:cursor-click-duotone class="text-3xl text-red-300" />
+  <div>
+    <div class="text-red-300 text-xs tracking-widest uppercase font-mono">Traditional</div>
+    <div class="font-bold">PowerPoint · Visio · draw.io</div>
+  </div>
+</div>
+
+<div class="h-px bg-white/10 mb-4"></div>
+
+<ul class="text-sm space-y-2 opacity-80">
+  <li>要用滑鼠拉方塊、連線</li>
+  <li>改一個節點就要重排版</li>
+  <li>無法 git diff 比對差異</li>
+  <li>截圖貼到文件很快就過期</li>
+</ul>
+
+</div>
+
+<div class="p-5 rounded-lg bg-teal-500/[0.05] border border-teal-500/30">
+
+<div class="flex items-center gap-3 mb-4">
+  <ph:code-duotone class="text-3xl text-teal-300" />
+  <div>
+    <div class="text-teal-300 text-xs tracking-widest uppercase font-mono">Mermaid</div>
+    <div class="font-bold">寫純文字</div>
+  </div>
+</div>
+
+<div class="h-px bg-teal-500/20 mb-4"></div>
+
+<ul class="text-sm space-y-2 opacity-80">
+  <li>幾行程式碼就產生一張圖</li>
+  <li>改文字，圖自動重排</li>
+  <li>可以用 git diff 看差異</li>
+  <li>GitHub / Notion / VSCode 原生渲染</li>
+</ul>
+
+</div>
+
+</div>
 
 ---
 layout: image-right
-image: https://cover.sli.dev
+image: https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=1200&q=80
 ---
 
-# Code
+# Mermaid 能畫什麼？
 
-Use code snippets and get the highlighting directly, and even types hover!
+<div class="text-sm opacity-60 pb-6">
+支援十幾種圖表，這堂課聚焦四種最常用的
+</div>
 
-```ts [filename-example.ts] {all|4|6|6-7|9|all} twoslash
-// TwoSlash enables TypeScript hover information
-// and errors in markdown code blocks
-// More at https://shiki.style/packages/twoslash
-import { computed, ref } from 'vue'
+<div class="space-y-3 pr-6">
 
-const count = ref(0)
-const doubled = computed(() => count.value * 2)
+<div class="flex items-center gap-4 p-3 rounded-lg bg-white/[0.03] border border-white/10">
+  <ph:flow-arrow-duotone class="text-3xl text-sky-400 shrink-0" />
+  <div>
+    <div class="font-bold text-sm">Flowchart</div>
+    <div class="text-xs opacity-60">流程圖 — 最常用</div>
+  </div>
+</div>
 
-doubled.value = 2
-```
+<div class="flex items-center gap-4 p-3 rounded-lg bg-white/[0.03] border border-white/10">
+  <ph:calendar-dots-duotone class="text-3xl text-amber-400 shrink-0" />
+  <div>
+    <div class="font-bold text-sm">Gantt</div>
+    <div class="text-xs opacity-60">甘特圖 — 專案排程</div>
+  </div>
+</div>
 
-<arrow v-click="[4, 5]" x1="350" y1="310" x2="195" y2="342" color="#953" width="2" arrowSize="1" />
+<div class="flex items-center gap-4 p-3 rounded-lg bg-white/[0.03] border border-white/10">
+  <ph:tree-structure-duotone class="text-3xl text-purple-400 shrink-0" />
+  <div>
+    <div class="font-bold text-sm">Mindmap</div>
+    <div class="text-xs opacity-60">心智圖 — 腦力激盪</div>
+  </div>
+</div>
 
-<!-- This allow you to embed external code blocks -->
-<<< @/snippets/external.ts#snippet
+<div class="flex items-center gap-4 p-3 rounded-lg bg-white/[0.03] border border-white/10">
+  <ph:chart-pie-slice-duotone class="text-3xl text-rose-400 shrink-0" />
+  <div>
+    <div class="font-bold text-sm">Pie</div>
+    <div class="text-xs opacity-60">圓餅圖 — 比例視覺化</div>
+  </div>
+</div>
 
-<!-- Footer -->
-
-[Learn more](https://sli.dev/features/line-highlighting)
-
-<!-- Inline style -->
-<style>
-.footnotes-sep {
-  @apply mt-5 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
-}
-</style>
-
-<!--
-Notes can also sync with clicks
-
-[click] This will be highlighted after the first click
-
-[click] Highlighted with `count = ref(0)`
-
-[click:3] Last click (skip two clicks)
--->
+</div>
 
 ---
-level: 2
----
 
-# Shiki Magic Move
+# 在 Slidev 中使用 Mermaid
 
-Powered by [shiki-magic-move](https://shiki-magic-move.netlify.app/), Slidev supports animations across multiple code snippets.
+<div class="text-sm opacity-60 pb-2">
+只要在 Markdown 裡寫一個 <code>mermaid</code> 程式碼區塊
+</div>
 
-Add multiple code blocks and wrap them with <code>````md magic-move</code> (four backticks) to enable the magic move. For example:
+<div class="grid grid-cols-2 gap-6 pt-4">
 
-````md magic-move {lines: true}
-```ts {*|2|*}
-// step 1
-const author = reactive({
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-})
-```
+<div>
 
-```ts {*|1-2|3-4|3-4,8}
-// step 2
-export default {
-  data() {
-    return {
-      author: {
-        name: 'John Doe',
-        books: [
-          'Vue 2 - Advanced Guide',
-          'Vue 3 - Basic Guide',
-          'Vue 4 - The Mystery'
-        ]
-      }
-    }
-  }
-}
-```
+<div class="text-xs tracking-widest text-teal-300 uppercase mb-2 font-mono">
+  <ph:pencil-simple-duotone class="inline mr-1" />Input · 你寫的
+</div>
 
-```ts
-// step 3
-export default {
-  data: () => ({
-    author: {
-      name: 'John Doe',
-      books: [
-        'Vue 2 - Advanced Guide',
-        'Vue 3 - Basic Guide',
-        'Vue 4 - The Mystery'
-      ]
-    }
-  })
-}
-```
-
-Non-code blocks are ignored.
-
-```vue
-<!-- step 4 -->
-<script setup>
-const author = {
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-}
-</script>
+````md
+```mermaid
+graph LR
+  A[開始] --> B[結束]
 ```
 ````
 
----
+<div class="pt-6 text-sm">
 
-# Components
+<div class="text-xs tracking-widest text-amber-300 uppercase mb-2 font-mono">
+  <ph:sliders-duotone class="inline mr-1" />Options · 可選
+</div>
 
-<div grid="~ cols-2 gap-4">
+```
+{theme: 'neutral', scale: 0.8}
+```
+
+控制外觀與大小。
+
+</div>
+
+</div>
+
 <div>
 
-You can use Vue components directly inside your slides.
-
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
-
-```html
-<Counter :count="10" />
-```
-
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
-
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
-
-</div>
-<div>
-
-```html
-<Tweet id="1390115482657726468" />
-```
-
-<Tweet id="1390115482657726468" scale="0.65" />
-
-</div>
+<div class="text-xs tracking-widest text-teal-300 uppercase mb-2 font-mono">
+  <ph:eye-duotone class="inline mr-1" />Output · 就變成
 </div>
 
-<!--
-Presenter note with **bold**, *italic*, and ~~striked~~ text.
+<div class="p-4 rounded-lg border border-teal-500/30 bg-teal-500/[0.05]">
 
-Also, HTML elements are valid:
-<div class="flex w-full">
-  <span style="flex-grow: 1;">Left content</span>
-  <span>Right content</span>
-</div>
--->
-
----
-class: px-20
----
-
-# Themes
-
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="t-2">
-
-```yaml
----
-theme: default
----
-```
-
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true" alt="">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true" alt="">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/guide/theme-addon#use-theme) and
-check out the [Awesome Themes Gallery](https://sli.dev/resources/theme-gallery).
-
----
-
-# Clicks Animations
-
-You can add `v-click` to elements to add a click animation.
-
-<div v-click>
-
-This shows up when you click the slide:
-
-```html
-<div v-click>This shows up when you click the slide.</div>
+```mermaid {scale: 0.85}
+graph LR
+  A[開始] --> B[結束]
 ```
 
 </div>
 
-<br>
-
-<v-click>
-
-The <span v-mark.red="3"><code>v-mark</code> directive</span>
-also allows you to add
-<span v-mark.circle.orange="4">inline marks</span>
-, powered by [Rough Notation](https://roughnotation.com/):
-
-```html
-<span v-mark.underline.orange>inline markers</span>
-```
-
-</v-click>
-
-<div mt-20 v-click>
-
-[Learn more](https://sli.dev/guide/animations#click-animation)
+</div>
 
 </div>
 
 ---
+layout: section
+class: text-left
+---
 
-# Motions
+<div class="text-sky-400 text-xs tracking-[0.3em] mb-4 font-mono">CHAPTER · 02</div>
 
-Motion animations are powered by [@vueuse/motion](https://motion.vueuse.org/), triggered by `v-motion` directive.
+# Flowchart
 
-```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }"
-  :click-3="{ x: 80 }"
-  :leave="{ x: 1000 }"
->
-  Slidev
-</div>
-```
-
-<div class="w-60 relative">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-square.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-circle.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-triangle.png"
-      alt=""
-    />
-  </div>
-
-  <div
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
-  </div>
+<div class="text-lg opacity-60 mt-4 font-light">
+流程圖 — 最重要、最常用的 Mermaid 圖表
 </div>
 
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
-  }
-}
-</script>
-
-<div
-  v-motion
-  :initial="{ x:35, y: 30, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
-
-[Learn more](https://sli.dev/guide/animations.html#motion)
-
+<div class="absolute bottom-10 right-10 opacity-20">
+  <ph:tree-view-duotone class="text-[16rem] text-sky-400" />
 </div>
 
 ---
 
-# $\LaTeX$
+# 方向：由上而下？還是由左至右？
 
-$\LaTeX$ is supported out-of-box. Powered by [$\KaTeX$](https://katex.org/).
+<div class="text-sm opacity-60 pb-3">
+第一行決定整張圖的走向：<code>graph</code> + 方向代碼
+</div>
 
-<div h-3 />
+<div class="grid grid-cols-2 gap-6">
 
-Inline $\sqrt{3x-1}+(1+x)^2$
+<div class="min-w-0 overflow-hidden p-4 rounded-lg border border-sky-500/30 bg-sky-500/[0.03]">
 
-Block
-$$ {1|3|all}
-\begin{aligned}
-\nabla \cdot \vec{E} &= \frac{\rho}{\varepsilon_0} \\
-\nabla \cdot \vec{B} &= 0 \\
-\nabla \times \vec{E} &= -\frac{\partial\vec{B}}{\partial t} \\
-\nabla \times \vec{B} &= \mu_0\vec{J} + \mu_0\varepsilon_0\frac{\partial\vec{E}}{\partial t}
-\end{aligned}
-$$
+<div class="flex items-center gap-2 pb-2">
+  <div class="text-xs font-mono px-2 py-0.5 rounded bg-sky-500/20 text-sky-300">TD</div>
+  <div class="text-xs opacity-60">Top-Down · 由上而下</div>
+</div>
 
-[Learn more](https://sli.dev/features/latex)
-
----
-
-# Diagrams
-
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
-
-<div class="grid grid-cols-4 gap-5 pt-4 -mb-6">
-
-```mermaid {scale: 0.5, alt: 'A simple sequence diagram'}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
-```
-
-```mermaid {theme: 'neutral', scale: 0.8}
+```mermaid {scale: 0.7}
 graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
-
-```mermaid
-mindmap
-  root((mindmap))
-    Origins
-      Long history
-      ::icon(fa fa-book)
-      Popularisation
-        British popular psychology author Tony Buzan
-    Research
-      On effectiveness<br/>and features
-      On Automatic creation
-        Uses
-            Creative techniques
-            Strategic planning
-            Argument mapping
-    Tools
-      Pen and paper
-      Mermaid
-```
-
-```plantuml {scale: 0.7}
-@startuml
-
-package "Some Group" {
-  HTTP - [First Component]
-  [Another Component]
-}
-
-node "Other Groups" {
-  FTP - [Second Component]
-  [First Component] --> FTP
-}
-
-cloud {
-  [Example 1]
-}
-
-database "MySql" {
-  folder "This is my folder" {
-    [Folder 3]
-  }
-  frame "Foo" {
-    [Frame 4]
-  }
-}
-
-[Another Component] --> [Example 1]
-[Example 1] --> [Folder 3]
-[Folder 3] --> [Frame 4]
-
-@enduml
+  A[登入] --> B[首頁]
+  B --> C[結帳]
 ```
 
 </div>
 
-Learn more: [Mermaid Diagrams](https://sli.dev/features/mermaid) and [PlantUML Diagrams](https://sli.dev/features/plantuml)
+<div class="min-w-0 overflow-hidden p-4 rounded-lg border border-purple-500/30 bg-purple-500/[0.03]">
 
----
-foo: bar
-dragPos:
-  square: 691,32,167,_,-16
----
+<div class="flex items-center gap-2 pb-2">
+  <div class="text-xs font-mono px-2 py-0.5 rounded bg-purple-500/20 text-purple-300">LR</div>
+  <div class="text-xs opacity-60">Left-Right · 由左至右</div>
+</div>
 
-# Draggable Elements
-
-Double-click on the draggable elements to edit their positions.
-
-<br>
-
-###### Directive Usage
-
-```md
-<img v-drag="'square'" src="https://sli.dev/logo.png">
+```mermaid {scale: 0.7}
+graph LR
+  A[登入] --> B[首頁]
+  B --> C[結帳]
 ```
 
-<br>
+</div>
 
-###### Component Usage
+</div>
 
-```md
-<v-drag text-3xl>
-  <div class="i-carbon:arrow-up" />
-  Use the `v-drag` component to have a draggable container!
-</v-drag>
+<div class="pt-6 text-xs opacity-50 text-center font-mono">
+其他方向：<kbd>BT</kbd> 下而上 · <kbd>RL</kbd> 右而左
+</div>
+
+---
+
+# 節點的形狀
+
+<div class="text-sm opacity-60 pb-2">用不同的括號，畫出不同形狀</div>
+
+<div class="p-3 rounded-lg border border-white/10 bg-white/[0.03] mb-3">
+
+```mermaid {scale: 0.55}
+graph LR
+  A["方形"] --> B("圓角") --> C(["膠囊"]) --> D{"菱形"}
+  D --> E(("圓形")) --> F>"旗幟"] --> G[("圓柱")]
 ```
 
-<v-drag pos="663,206,261,_,-15">
-  <div text-center text-3xl border border-main rounded>
-    Double-click me!
+</div>
+
+<div class="grid grid-cols-7 gap-2 text-xs text-center">
+  <div class="p-2 rounded bg-white/[0.03] border border-white/10"><code>[ ]</code><div class="text-[10px] opacity-60 pt-0.5">一般步驟</div></div>
+  <div class="p-2 rounded bg-white/[0.03] border border-white/10"><code>( )</code><div class="text-[10px] opacity-60 pt-0.5">柔和步驟</div></div>
+  <div class="p-2 rounded bg-white/[0.03] border border-white/10"><code>([ ])</code><div class="text-[10px] opacity-60 pt-0.5">起點/終點</div></div>
+  <div class="p-2 rounded bg-amber-500/10 border border-amber-500/30"><code>{ }</code><div class="text-[10px] opacity-60 pt-0.5"><b>判斷</b></div></div>
+  <div class="p-2 rounded bg-white/[0.03] border border-white/10"><code>(( ))</code><div class="text-[10px] opacity-60 pt-0.5">圓圈</div></div>
+  <div class="p-2 rounded bg-white/[0.03] border border-white/10"><code>&gt; ]</code><div class="text-[10px] opacity-60 pt-0.5">旗幟</div></div>
+  <div class="p-2 rounded bg-white/[0.03] border border-white/10"><code>[( )]</code><div class="text-[10px] opacity-60 pt-0.5">資料庫</div></div>
+</div>
+
+---
+
+# 連線的樣式
+
+<div class="text-sm opacity-60 pb-3">箭頭有多種畫法，還能帶「文字標籤」</div>
+
+<div class="grid grid-cols-2 gap-6">
+
+<div class="min-w-0 overflow-hidden p-4 rounded-lg border border-white/10 bg-white/[0.03] flex items-center justify-center">
+
+```mermaid {scale: 0.45}
+graph TD
+  A -->|實線箭頭| B
+  B --- C
+  C -.->|虛線| D
+  D ==>|粗線| E
+  E -- 有標籤 --> F
+```
+
+</div>
+
+<div class="min-w-0 text-sm space-y-2">
+
+<div class="flex gap-3 p-2 rounded bg-white/[0.03] border border-white/10">
+  <code class="text-teal-300 w-24 shrink-0">--&gt;</code>
+  <div>實線箭頭</div>
+</div>
+
+<div class="flex gap-3 p-2 rounded bg-white/[0.03] border border-white/10">
+  <code class="text-teal-300 w-24 shrink-0">---</code>
+  <div>實線、無箭頭</div>
+</div>
+
+<div class="flex gap-3 p-2 rounded bg-white/[0.03] border border-white/10">
+  <code class="text-teal-300 w-24 shrink-0">-.-&gt;</code>
+  <div>虛線</div>
+</div>
+
+<div class="flex gap-3 p-2 rounded bg-white/[0.03] border border-white/10">
+  <code class="text-teal-300 w-24 shrink-0">==&gt;</code>
+  <div>粗線（強調）</div>
+</div>
+
+<div class="flex gap-3 p-2 rounded bg-amber-500/10 border border-amber-500/30">
+  <code class="text-amber-300 w-24 shrink-0">--&gt;&#124;text&#124;</code>
+  <div>箭頭上加文字</div>
+</div>
+
+</div>
+
+</div>
+
+<div class="text-xs opacity-60 pt-3 text-center flex items-center justify-center gap-2">
+  <ph:lightbulb-duotone />判斷節點（菱形）搭配帶標籤的箭頭最實用
+</div>
+
+---
+layout: fact
+---
+
+# 6 行
+
+<div class="text-lg opacity-60 mt-4 font-light max-w-2xl mx-auto">
+接下來你會看到 — 一個完整的使用者登入流程圖<br>
+只需要 6 行 Mermaid 程式碼
+</div>
+
+---
+
+# 實戰範例：使用者登入流程
+
+<div class="grid grid-cols-5 gap-6 pt-2">
+
+<div class="col-span-3 min-w-0 overflow-hidden p-4 rounded-lg border border-emerald-500/30 bg-emerald-500/[0.03]">
+
+```mermaid {scale: 0.7}
+graph TD
+  A(["使用者開啟 App"]) --> B["輸入帳號密碼"]
+  B --> C{"驗證通過?"}
+  C -->|是| D["進入首頁"]
+  C -->|否| E["顯示錯誤訊息"]
+  E --> B
+  D --> F(["結束"])
+```
+
+</div>
+
+<div class="col-span-2 text-sm">
+
+<div class="flex items-center gap-2 text-xs tracking-widest text-emerald-300 uppercase pb-3 font-mono">
+<ph:magnifying-glass-duotone />重點觀察
+</div>
+
+<v-clicks>
+
+<div class="pb-2 flex gap-2">
+  <div class="text-emerald-400">▸</div>
+  <div>起點／終點用 <code>([ ])</code> <b>膠囊</b>形狀</div>
+</div>
+
+<div class="pb-2 flex gap-2">
+  <div class="text-emerald-400">▸</div>
+  <div>判斷用 <code>{ }</code> <b>菱形</b></div>
+</div>
+
+<div class="pb-2 flex gap-2">
+  <div class="text-emerald-400">▸</div>
+  <div>箭頭標籤 <code>|是|</code>、<code>|否|</code> 標示分支</div>
+</div>
+
+<div class="pb-2 flex gap-2">
+  <div class="text-emerald-400">▸</div>
+  <div><code>E --> B</code> 形成<b>迴圈</b>：錯誤就回到輸入</div>
+</div>
+
+<div class="pb-2 flex gap-2">
+  <div class="text-emerald-400">▸</div>
+  <div>整張圖只用了 <b class="text-emerald-300">6 行程式碼</b></div>
+</div>
+
+</v-clicks>
+
+</div>
+
+</div>
+
+---
+
+# 用 subgraph 把節點分組
+
+<div class="text-sm opacity-60 pb-3">
+當圖變複雜時，用 <code>subgraph</code> 把相關節點框起來
+</div>
+
+<div class="grid grid-cols-2 gap-6">
+
+<div class="min-w-0 overflow-hidden p-4 rounded-lg border border-white/10 bg-white/[0.03]">
+
+```mermaid {scale: 0.75}
+graph LR
+  User[使用者] --> API
+  subgraph Backend [後端]
+    API --> DB[(資料庫)]
+    API --> Cache[(快取)]
+  end
+  subgraph Frontend [前端]
+    User
+  end
+```
+
+</div>
+
+<div class="space-y-3 pt-2 text-sm">
+
+<div class="p-3 rounded-lg bg-sky-500/[0.05] border-l-2 border-sky-500">
+<div class="font-mono text-xs text-sky-300 pb-1">SYNTAX</div>
+<code>subgraph 名稱</code> ... <code>end</code>
+</div>
+
+<div class="p-3 rounded-lg bg-purple-500/[0.05] border-l-2 border-purple-500">
+<div class="font-mono text-xs text-purple-300 pb-1">USE CASE</div>
+適合畫系統架構圖
+</div>
+
+<div class="p-3 rounded-lg bg-emerald-500/[0.05] border-l-2 border-emerald-500">
+<div class="font-mono text-xs text-emerald-300 pb-1">BONUS</div>
+分組會自動加上邊框與標題
+</div>
+
+</div>
+
+</div>
+
+---
+
+# 用樣式讓圖更有表達力
+
+<div class="text-sm opacity-60 pb-3">
+<code>classDef</code> 定義樣式，<code>class</code> 套用到節點
+</div>
+
+<div class="grid grid-cols-2 gap-6">
+
+<div class="min-w-0 overflow-hidden p-4 rounded-lg border border-white/10 bg-white/[0.03]">
+
+```mermaid {scale: 0.75}
+graph LR
+  A[一般] --> B[重要]
+  B --> C[警告]
+  B --> D[成功]
+  classDef danger fill:#fee,stroke:#f33,color:#900
+  classDef ok fill:#efe,stroke:#3c3,color:#060
+  classDef hi fill:#ffd,stroke:#dc0
+  class B hi
+  class C danger
+  class D ok
+```
+
+</div>
+
+<div class="text-sm">
+
+<div class="text-xs tracking-widest text-amber-300 uppercase pb-2 font-mono">Syntax</div>
+
+```
+classDef 名稱 css樣式
+class 節點 樣式名
+```
+
+<div class="text-xs tracking-widest text-amber-300 uppercase pb-2 pt-4 font-mono">Supported Properties</div>
+
+<div class="grid grid-cols-2 gap-2">
+  <div class="px-2 py-1 rounded bg-white/[0.03] border border-white/10 text-xs"><code>fill</code> 填色</div>
+  <div class="px-2 py-1 rounded bg-white/[0.03] border border-white/10 text-xs"><code>stroke</code> 邊框色</div>
+  <div class="px-2 py-1 rounded bg-white/[0.03] border border-white/10 text-xs"><code>color</code> 字色</div>
+  <div class="px-2 py-1 rounded bg-white/[0.03] border border-white/10 text-xs"><code>stroke-width</code></div>
+</div>
+
+<div class="pt-3 text-xs opacity-60">
+一次定義、多處套用，保持視覺一致性
+</div>
+
+</div>
+
+</div>
+
+---
+layout: section
+class: text-left
+---
+
+<div class="text-amber-400 text-xs tracking-[0.3em] mb-4 font-mono">CHAPTER · 03</div>
+
+# Gantt
+
+<div class="text-lg opacity-60 mt-4 font-light">
+甘特圖 — 畫專案排程與時間軸
+</div>
+
+<div class="absolute bottom-10 right-10 opacity-20">
+  <ph:calendar-dots-duotone class="text-[16rem] text-amber-400" />
+</div>
+
+---
+
+# Gantt 基本語法
+
+<div class="text-sm opacity-60 pb-2">展示「誰在什麼時間做什麼事」</div>
+
+<div class="p-3 rounded-lg border border-amber-500/30 bg-amber-500/[0.03] mb-3">
+
+```mermaid {scale: 0.55}
+gantt
+  title 產品開發排程
+  dateFormat YYYY-MM-DD
+  section 設計
+    需求訪談 :done,  d1, 2026-04-01, 5d
+    UI 設計  :active,d2, after d1, 7d
+  section 開發
+    前端     :a1, after d2, 10d
+    後端     :crit, a2, after d2, 12d
+  section 測試
+    QA 測試  :t1, after a2, 5d
+```
+
+</div>
+
+<div class="grid grid-cols-4 gap-2 text-xs">
+
+<div class="p-2 rounded bg-white/[0.03] border border-white/10">
+<code class="text-sky-400">title</code>
+<div class="opacity-60 pt-0.5">設定標題</div>
+</div>
+
+<div class="p-2 rounded bg-white/[0.03] border border-white/10">
+<code class="text-purple-400">dateFormat</code>
+<div class="opacity-60 pt-0.5">日期格式</div>
+</div>
+
+<div class="p-2 rounded bg-white/[0.03] border border-white/10">
+<code class="text-emerald-400">section</code>
+<div class="opacity-60 pt-0.5">分組（階段）</div>
+</div>
+
+<div class="p-2 rounded bg-amber-500/10 border border-amber-500/30">
+<code class="text-amber-300">名稱 :狀態, 別名, 起始, 長度</code>
+<div class="opacity-60 pt-0.5">
+<span class="text-gray-400">done</span> ·
+<span class="text-sky-400">active</span> ·
+<span class="text-rose-400">crit</span>
+</div>
+</div>
+
+</div>
+
+---
+
+# Gantt 時間表達方式
+
+<div class="grid grid-cols-2 gap-6 pt-4">
+
+<div class="space-y-2">
+
+<div class="p-3 rounded-lg bg-white/[0.03] border border-white/10">
+<code class="text-amber-300">2026-04-01, 5d</code>
+<div class="text-xs opacity-60 pt-1">從 4/1 起算 <b>5 天</b></div>
+</div>
+
+<div class="p-3 rounded-lg bg-white/[0.03] border border-white/10">
+<code class="text-amber-300">2026-04-01, 2026-04-10</code>
+<div class="text-xs opacity-60 pt-1">指定<b>起訖日期</b></div>
+</div>
+
+<div class="p-3 rounded-lg bg-white/[0.03] border border-white/10">
+<code class="text-amber-300">after d1, 7d</code>
+<div class="text-xs opacity-60 pt-1">接在別名 <code>d1</code> 之後 7 天</div>
+</div>
+
+<div class="p-3 rounded-lg bg-white/[0.03] border border-white/10">
+<code class="text-amber-300">after d1 d2, 3d</code>
+<div class="text-xs opacity-60 pt-1">等 <code>d1</code>、<code>d2</code> 都完成再開始</div>
+</div>
+
+</div>
+
+<div class="flex items-center">
+
+<div class="p-5 rounded-lg bg-amber-500/[0.05] border border-amber-500/30">
+  <ph:lightbulb-duotone class="text-3xl text-amber-400 mb-2" />
+  <div class="font-bold text-amber-300 mb-2">別名是甘特圖的靈魂</div>
+  <div class="text-sm opacity-70 leading-relaxed">
+    用 <code>after 別名</code> 就不用自己算日期，<br>
+    只要說「接在前一個任務後面」就好。<br>
+    任務時間全部自動連動。
   </div>
-</v-drag>
+</div>
 
-<img v-drag="'square'" src="https://sli.dev/logo.png">
+</div>
 
-###### Draggable Arrow
+</div>
 
-```md
-<v-drag-arrow two-way />
+---
+layout: section
+class: text-left
+---
+
+<div class="text-rose-400 text-xs tracking-[0.3em] mb-4 font-mono">CHAPTER · 04</div>
+
+# Mindmap &amp; Pie
+
+<div class="text-lg opacity-60 mt-4 font-light">
+心智圖與圓餅圖 — 簡單但實用
+</div>
+
+<div class="absolute bottom-10 right-10 opacity-20">
+  <ph:chart-pie-slice-duotone class="text-[16rem] text-rose-400" />
+</div>
+
+---
+
+# Mindmap 心智圖
+
+<div class="text-sm opacity-60 pb-3">靠<b>縮排層級</b>決定階層關係</div>
+
+<div class="grid grid-cols-2 gap-6">
+
+<div class="min-w-0 overflow-hidden p-3 rounded-lg border border-purple-500/30 bg-purple-500/[0.03]">
+
+```mermaid {scale: 0.55}
+mindmap
+  root((學好 Mermaid))
+    基礎
+      Flowchart
+      節點形狀
+      箭頭
+    進階
+      子圖 subgraph
+      樣式 classDef
+      佈景主題
+    應用
+      API 文件
+      專案排程
+      讀書筆記
 ```
 
-<v-drag-arrow pos="67,452,253,46" two-way op70 />
+</div>
+
+<div class="space-y-3 text-sm">
+
+<div class="flex gap-3 p-3 rounded-lg bg-white/[0.03] border border-white/10">
+  <div class="text-purple-400 font-mono text-xs pt-0.5">01</div>
+  <div>第一行 <code>mindmap</code></div>
+</div>
+
+<div class="flex gap-3 p-3 rounded-lg bg-white/[0.03] border border-white/10">
+  <div class="text-purple-400 font-mono text-xs pt-0.5">02</div>
+  <div><code>root((中心主題))</code> — 中心節點</div>
+</div>
+
+<div class="flex gap-3 p-3 rounded-lg bg-white/[0.03] border border-white/10">
+  <div class="text-purple-400 font-mono text-xs pt-0.5">03</div>
+  <div><b>縮排</b> 決定層級（2 空格 = 一層）</div>
+</div>
+
+<div class="flex gap-3 p-3 rounded-lg bg-white/[0.03] border border-white/10">
+  <div class="text-purple-400 font-mono text-xs pt-0.5">04</div>
+  <div>形狀同 Flowchart：<code>[ ]</code>、<code>( )</code>、<code>(( ))</code></div>
+</div>
+
+</div>
+
+</div>
 
 ---
-src: ./pages/imported-slides.md
-hide: false
----
 
----
+# Pie 圓餅圖
 
-# Monaco Editor
+<div class="text-sm opacity-60 pb-3">最簡單的圖 — 一行標題 + 分類資料</div>
 
-Slidev provides built-in Monaco Editor support.
+<div class="grid grid-cols-2 gap-6">
 
-Add `{monaco}` to the code block to turn it into an editor:
+<div class="min-w-0 overflow-hidden p-3 rounded-lg border border-rose-500/30 bg-rose-500/[0.03]">
 
-```ts {monaco}
-import { ref } from 'vue'
-import { emptyArray } from './external'
-
-const arr = ref(emptyArray(10))
+```mermaid {scale: 0.75}
+pie title 一週時間分配
+  "睡覺" : 56
+  "工作" : 40
+  "吃飯" : 14
+  "學習 Mermaid" : 10
+  "其他" : 48
 ```
 
-Use `{monaco-run}` to create an editor that can execute the code directly in the slide:
+</div>
 
-```ts {monaco-run}
-import { version } from 'vue'
-import { emptyArray, sayHello } from './external'
+<div class="space-y-3 text-sm">
 
-sayHello()
-console.log(`vue ${version}`)
-console.log(emptyArray<number>(10).reduce(fib => [...fib, fib.at(-1)! + fib.at(-2)!], [1, 1]))
-```
+<div class="p-3 rounded-lg bg-white/[0.03] border border-white/10">
+<div class="font-mono text-xs text-rose-300 pb-1">LINE 1</div>
+<code>pie title 標題</code>
+</div>
+
+<div class="p-3 rounded-lg bg-white/[0.03] border border-white/10">
+<div class="font-mono text-xs text-rose-300 pb-1">DATA</div>
+<code>"分類" : 數值</code>
+</div>
+
+<div class="p-3 rounded-lg bg-white/[0.03] border border-white/10">
+<div class="font-mono text-xs text-rose-300 pb-1">AUTO</div>
+Mermaid 會<b>自動算百分比</b>
+</div>
+
+<div class="p-3 rounded-lg bg-rose-500/[0.05] border border-rose-500/30">
+<div class="font-mono text-xs text-rose-300 pb-1">BONUS</div>
+加 <code>showData</code> 顯示實際數字：<br>
+<code>pie showData title ...</code>
+</div>
+
+</div>
+
+</div>
 
 ---
-layout: center
+layout: section
+class: text-left
+---
+
+<div class="text-orange-400 text-xs tracking-[0.3em] mb-4 font-mono">TIPS</div>
+
+# 實戰技巧
+
+<div class="text-lg opacity-60 mt-4 font-light">
+初學者最常踩的雷
+</div>
+
+<div class="absolute bottom-10 right-10 opacity-20">
+  <ph:warning-duotone class="text-[16rem] text-orange-400" />
+</div>
+
+---
+
+# 常見錯誤 Top 5
+
+<div class="space-y-2 pt-2">
+
+<v-clicks>
+
+<div class="flex gap-4 items-start p-3 rounded-lg bg-white/[0.03] border border-red-500/20">
+  <div class="font-mono text-red-400 text-2xl font-bold shrink-0 w-8">01</div>
+  <div class="flex-1 pt-1">
+    <div class="font-bold text-red-300">第一行忘了寫圖表類型</div>
+    <div class="text-xs opacity-60">一定要以 <code>graph</code> / <code>gantt</code> / <code>mindmap</code> / <code>pie</code> 開頭</div>
+  </div>
+</div>
+
+<div class="flex gap-4 items-start p-3 rounded-lg bg-white/[0.03] border border-red-500/20">
+  <div class="font-mono text-red-400 text-2xl font-bold shrink-0 w-8">02</div>
+  <div class="flex-1 pt-1">
+    <div class="font-bold text-red-300">節點 ID 重複</div>
+    <div class="text-xs opacity-60"><code>A[登入] --> A[登出]</code> 會被視為同一個節點，改用不同 ID</div>
+  </div>
+</div>
+
+<div class="flex gap-4 items-start p-3 rounded-lg bg-white/[0.03] border border-red-500/20">
+  <div class="font-mono text-red-400 text-2xl font-bold shrink-0 w-8">03</div>
+  <div class="flex-1 pt-1">
+    <div class="font-bold text-red-300">中文用到全形標點</div>
+    <div class="text-xs opacity-60">節點內的括號、逗號請用<b>半形</b>，否則解析失敗</div>
+  </div>
+</div>
+
+<div class="flex gap-4 items-start p-3 rounded-lg bg-white/[0.03] border border-red-500/20">
+  <div class="font-mono text-red-400 text-2xl font-bold shrink-0 w-8">04</div>
+  <div class="flex-1 pt-1">
+    <div class="font-bold text-red-300">Gantt 沒寫 dateFormat</div>
+    <div class="text-xs opacity-60">最穩寫法：<code>dateFormat YYYY-MM-DD</code></div>
+  </div>
+</div>
+
+<div class="flex gap-4 items-start p-3 rounded-lg bg-white/[0.03] border border-red-500/20">
+  <div class="font-mono text-red-400 text-2xl font-bold shrink-0 w-8">05</div>
+  <div class="flex-1 pt-1">
+    <div class="font-bold text-red-300">圖太大切到畫面外</div>
+    <div class="text-xs opacity-60">加 <code>{scale: 0.6}</code> 縮小，或改用 <code>graph LR</code> 橫向排</div>
+  </div>
+</div>
+
+</v-clicks>
+
+</div>
+
+---
+
+# 繼續學習的資源
+
+<div class="grid grid-cols-2 gap-4 pt-4">
+
+<a href="https://mermaid.js.org" target="_blank" class="group p-5 rounded-lg bg-white/[0.03] border border-sky-500/30 no-underline transition hover:border-sky-400">
+  <ph:book-open-duotone class="text-3xl text-sky-400 mb-2" />
+  <div class="font-bold text-lg">官方文件</div>
+  <div class="text-xs opacity-60 font-mono">mermaid.js.org</div>
+  <div class="text-xs opacity-50 mt-2">最完整的語法參考</div>
+</a>
+
+<a href="https://mermaid.live" target="_blank" class="group p-5 rounded-lg bg-white/[0.03] border border-purple-500/30 no-underline transition hover:border-purple-400">
+  <ph:flask-duotone class="text-3xl text-purple-400 mb-2" />
+  <div class="font-bold text-lg">Live Editor</div>
+  <div class="text-xs opacity-60 font-mono">mermaid.live</div>
+  <div class="text-xs opacity-50 mt-2">邊寫邊看結果，最快上手</div>
+</a>
+
+<div class="p-5 rounded-lg bg-white/[0.03] border border-amber-500/30">
+  <ph:puzzle-piece-duotone class="text-3xl text-amber-400 mb-2" />
+  <div class="font-bold text-lg">VSCode 外掛</div>
+  <div class="text-xs opacity-60 font-mono">Markdown Preview Mermaid Support</div>
+  <div class="text-xs opacity-50 mt-2">在 VSCode 直接預覽</div>
+</div>
+
+</div>
+
+<div class="pt-6 text-xs opacity-60 text-center flex items-center justify-center gap-2">
+  <ph:lightbulb-duotone />最快的學法：打開 Live Editor，把今天的範例貼進去，亂改一通
+</div>
+
+---
+layout: quote
 class: text-center
 ---
 
-# Learn More
+<div class="text-3xl font-light leading-relaxed max-w-4xl mx-auto">
+用<span class="text-teal-400 font-medium">文字</span>畫圖的好處，<br>
+不是讓圖變漂亮，<br>
+而是讓你能<span class="text-amber-300 font-medium">專注在內容本身</span>。
+</div>
 
-[Documentation](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/resources/showcases)
+<div class="text-xs opacity-40 mt-10 tracking-widest uppercase font-mono">
+— Why Mermaid
+</div>
 
-<PoweredBySlidev mt-10 />
+---
+layout: end
+class: text-center
+---
+
+<div class="absolute inset-0 bg-[#0b1220]"></div>
+
+<div class="relative z-10">
+
+<div class="flex justify-center mb-6">
+  <ph:check-circle-duotone class="text-7xl text-teal-400" />
+</div>
+
+<div class="text-5xl font-bold text-slate-100">
+謝謝聆聽
+</div>
+
+<div class="text-base opacity-60 pt-4 font-light">
+現在你已經會用<b class="text-teal-300">文字</b>畫圖了
+</div>
+
+<div class="pt-12 inline-block">
+  <div class="p-5 rounded-lg bg-white/[0.03] border border-white/10">
+    <div class="flex items-center gap-2 text-xs opacity-50 tracking-[0.3em] uppercase mb-2 font-mono justify-center">
+      <ph:notepad-duotone />今日作業
+    </div>
+    <div class="text-base">用 Mermaid 畫出你今天一整天的行程</div>
+  </div>
+</div>
+
+</div>
