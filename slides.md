@@ -1331,7 +1331,13 @@ class: text-center
 現在你已經會用<b class="text-teal-300">文字</b>畫圖了
 </div>
 
-<div class="pt-12 inline-block">
+<div class="pt-8 flex items-center justify-center gap-2 text-xs opacity-60">
+  <ph:user-duotone class="text-teal-400" />
+  <span class="tracking-[0.3em] uppercase font-mono">Author</span>
+  <span class="text-teal-300 font-medium tracking-wide">Ice</span>
+</div>
+
+<div class="pt-8 inline-block">
   <div class="p-5 rounded-lg bg-white/[0.03] border border-white/10">
     <div class="flex items-center gap-2 text-xs opacity-50 tracking-[0.3em] uppercase mb-2 font-mono justify-center">
       <ph:notepad-duotone />今日作業
