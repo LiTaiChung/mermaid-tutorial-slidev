@@ -245,64 +245,6 @@ image: https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=1200&q=80
 </div>
 
 ---
-
-# 在 Slidev 中使用 Mermaid
-
-<div class="text-sm opacity-60 pb-2">
-只要在 Markdown 裡寫一個 <code>mermaid</code> 程式碼區塊
-</div>
-
-<div class="grid grid-cols-2 gap-6 pt-4">
-
-<div>
-
-<div class="text-xs tracking-widest text-teal-300 uppercase mb-2 font-mono">
-  <ph:pencil-simple-duotone class="inline mr-1" />Input · 你寫的
-</div>
-
-````md
-```mermaid
-graph LR
-  A[開始] --> B[結束]
-```
-````
-
-<div class="pt-6 text-sm">
-
-<div class="text-xs tracking-widest text-amber-300 uppercase mb-2 font-mono">
-  <ph:sliders-duotone class="inline mr-1" />Options · 可選
-</div>
-
-```
-{theme: 'neutral', scale: 0.8}
-```
-
-控制外觀與大小。
-
-</div>
-
-</div>
-
-<div>
-
-<div class="text-xs tracking-widest text-teal-300 uppercase mb-2 font-mono">
-  <ph:eye-duotone class="inline mr-1" />Output · 就變成
-</div>
-
-<div class="p-4 rounded-lg border border-teal-500/30 bg-teal-500/[0.05]">
-
-```mermaid {scale: 0.85}
-graph LR
-  A[開始] --> B[結束]
-```
-
-</div>
-
-</div>
-
-</div>
-
----
 layout: section
 class: text-left
 ---
@@ -532,6 +474,86 @@ graph TD
 
 ---
 
+# 實戰範例：混用節點形狀與連線樣式
+
+<div class="text-sm opacity-60 pb-3">同一張圖裡可以混用各種形狀與箭頭，讓圖更有層次感</div>
+
+<div class="grid grid-cols-3 gap-4">
+
+<div class="min-w-0 overflow-hidden rounded-lg border border-sky-500/30 bg-sky-500/[0.03]">
+<div class="px-3 py-2 border-b border-sky-500/20 flex items-center gap-2">
+  <ph:plugs-duotone class="text-sky-400" />
+  <div class="text-xs font-mono text-sky-300">API 請求處理</div>
+</div>
+<div class="p-3">
+
+```mermaid {scale: 0.45}
+graph LR
+  C([Client]) ==>|POST| A{API}
+  A -->|valid| D[(DB)]
+  A -.->|invalid| E>400]
+  D --> R([Response])
+```
+
+</div>
+<div class="px-3 pb-3 text-[11px] opacity-70 space-y-0.5">
+<div>形狀：<code>([ ])</code> <code>{ }</code> <code>[( )]</code> <code>&gt; ]</code></div>
+<div>連線：<code>==&gt;</code> 粗線 · <code>-.-&gt;</code> 虛線</div>
+</div>
+</div>
+
+<div class="min-w-0 overflow-hidden rounded-lg border border-amber-500/30 bg-amber-500/[0.03]">
+<div class="px-3 py-2 border-b border-amber-500/20 flex items-center gap-2">
+  <ph:git-branch-duotone class="text-amber-400" />
+  <div class="text-xs font-mono text-amber-300">CI/CD Pipeline</div>
+</div>
+<div class="p-3">
+
+```mermaid {scale: 0.45}
+graph TD
+  P((Push)) --> L[Lint]
+  L --> T[Test]
+  T ==>|pass| D[Deploy]
+  T -.->|fail| N>Notify]
+```
+
+</div>
+<div class="px-3 pb-3 text-[11px] opacity-70 space-y-0.5">
+<div>形狀：<code>(( ))</code> <code>[ ]</code> <code>&gt; ]</code></div>
+<div>連線：<code>==&gt;</code> 成功 · <code>-.-&gt;</code> 失敗</div>
+</div>
+</div>
+
+<div class="min-w-0 overflow-hidden rounded-lg border border-emerald-500/30 bg-emerald-500/[0.03]">
+<div class="px-3 py-2 border-b border-emerald-500/20 flex items-center gap-2">
+  <ph:arrows-clockwise-duotone class="text-emerald-400" />
+  <div class="text-xs font-mono text-emerald-300">使用者回饋迴圈</div>
+</div>
+<div class="p-3">
+
+```mermaid {scale: 0.45}
+graph LR
+  U([User]) --> F[Feedback]
+  F --> R{Review}
+  R -->|Accept| B[(Backlog)]
+  R -->|Reject| U
+```
+
+</div>
+<div class="px-3 pb-3 text-[11px] opacity-70 space-y-0.5">
+<div>形狀：<code>([ ])</code> <code>{ }</code> <code>[( )]</code></div>
+<div>連線：<code>-&gt;|text|</code> 帶標籤 · 迴圈</div>
+</div>
+</div>
+
+</div>
+
+<div class="pt-4 text-xs opacity-60 text-center flex items-center justify-center gap-2">
+<ph:lightbulb-duotone />用對形狀 + 對的箭頭，同一張圖就能清楚表達「資料型態」與「流程性質」
+</div>
+
+---
+
 # 用 subgraph 把節點分組
 
 <div class="text-sm opacity-60 pb-3">
@@ -576,6 +598,97 @@ graph LR
 </div>
 
 </div>
+
+---
+
+# 實戰範例：三層式系統架構圖
+
+<div class="text-xs opacity-60 pb-2">左邊程式碼按空白鍵逐組拆解，右邊是實際架構圖</div>
+
+<div class="grid grid-cols-2 gap-4">
+
+<div class="text-xs">
+
+```yaml {all|1-2|3-5|6-9|10-13|14-17|all}
+graph LR
+  U([User]) --> Web
+  subgraph Frontend [前端]
+    Web[Web App]
+  end
+  subgraph Backend [後端服務]
+    Auth[Auth API]
+    Order[Order API]
+  end
+  subgraph Data [資料層]
+    DB[(PostgreSQL)]
+    Cache[(Redis)]
+  end
+  Web --> Auth
+  Web --> Order
+  Auth --> Cache
+  Order --> DB
+```
+
+<div class="pt-2 space-y-1">
+
+<div v-click="[1,2]" class="px-2 py-1 rounded bg-white/[0.03] border-l-2 border-teal-400 text-[10px]">
+<code class="text-teal-300">graph LR / User → Web</code>
+<span class="opacity-70 pl-1">使用者入口</span>
+</div>
+
+<div v-click="[2,3]" class="px-2 py-1 rounded bg-white/[0.03] border-l-2 border-sky-400 text-[10px]">
+<code class="text-sky-300">subgraph Frontend</code>
+<span class="opacity-70 pl-1">第一層 — 前端群組</span>
+</div>
+
+<div v-click="[3,4]" class="px-2 py-1 rounded bg-white/[0.03] border-l-2 border-amber-400 text-[10px]">
+<code class="text-amber-300">subgraph Backend</code>
+<span class="opacity-70 pl-1">Auth / Order 兩個服務</span>
+</div>
+
+<div v-click="[4,5]" class="px-2 py-1 rounded bg-white/[0.03] border-l-2 border-emerald-400 text-[10px]">
+<code class="text-emerald-300">subgraph Data</code>
+<span class="opacity-70 pl-1">圓柱形 DB 與 Cache</span>
+</div>
+
+<div v-click="[5,6]" class="px-2 py-1 rounded bg-white/[0.03] border-l-2 border-rose-400 text-[10px]">
+<code class="text-rose-300">Web → Auth / Auth → Cache</code>
+<span class="opacity-70 pl-1">跨 subgraph 連線</span>
+</div>
+
+</div>
+
+</div>
+
+<div class="min-w-0 overflow-hidden p-3 rounded-lg border border-sky-500/30 bg-sky-500/[0.03] flex items-center justify-center">
+
+```mermaid {scale: 0.48}
+graph LR
+  U([User]) --> Web
+  subgraph Frontend [前端]
+    Web[Web App]
+  end
+  subgraph Backend [後端服務]
+    Auth[Auth API]
+    Order[Order API]
+  end
+  subgraph Data [資料層]
+    DB[(PostgreSQL)]
+    Cache[(Redis)]
+  end
+  Web --> Auth
+  Web --> Order
+  Auth --> Cache
+  Order --> DB
+```
+
+</div>
+
+</div>
+
+<style scoped>
+pre, code { font-size: 0.7rem !important; line-height: 1.3 !important; }
+</style>
 
 ---
 
@@ -746,6 +859,84 @@ gantt
 </div>
 
 ---
+
+# 實戰範例：新人 Onboarding 三週計畫
+
+<div class="text-sm opacity-60 pb-3">左邊程式碼按空白鍵逐行解說，右邊是實際甘特圖</div>
+
+<div class="grid grid-cols-2 gap-6">
+
+<div>
+
+```yaml {all|1|2|3|4|5|6|7|8|9|10|all}
+gantt
+  title 新人 Onboarding
+  dateFormat YYYY-MM-DD
+  section Week 1
+    環境設定 :done, s1, 2026-05-04, 2d
+    團隊介紹 :active, s2, after s1, 3d
+  section Week 2
+    第一個 PR :p1, after s2, 5d
+  section Week 3
+    獨立 Feature :crit, f1, after p1, 5d
+```
+
+<div class="pt-3 min-h-[9rem]">
+
+<div v-click="[1,3]" class="p-2 rounded-lg bg-white/[0.03] border-l-2 border-amber-400 text-xs">
+<code class="text-amber-300">gantt / title / dateFormat</code>
+<span class="opacity-70 pl-2">宣告甘特圖、標題、日期格式</span>
+</div>
+
+<div v-click="[3,5]" class="p-2 rounded-lg bg-white/[0.03] border-l-2 border-sky-400 text-xs">
+<code class="text-sky-300">section Week 1</code>
+<span class="opacity-70 pl-2">分組 — 第一週的兩個任務</span>
+</div>
+
+<div v-click="[5,6]" class="p-2 rounded-lg bg-white/[0.03] border-l-2 border-gray-400 text-xs">
+<code class="text-gray-300">:done, s1, 2026-05-04, 2d</code>
+<span class="opacity-70 pl-2">已完成 — 灰色</span>
+</div>
+
+<div v-click="[6,7]" class="p-2 rounded-lg bg-white/[0.03] border-l-2 border-emerald-400 text-xs">
+<code class="text-emerald-300">:active, s2, after s1, 3d</code>
+<span class="opacity-70 pl-2">進行中 — 藍色，接在 s1 之後</span>
+</div>
+
+<div v-click="[7,10]" class="p-2 rounded-lg bg-white/[0.03] border-l-2 border-purple-400 text-xs">
+<code class="text-purple-300">section Week 2 / Week 3</code>
+<span class="opacity-70 pl-2">後兩週接續排程</span>
+</div>
+
+<div v-click="[10,11]" class="p-2 rounded-lg bg-white/[0.03] border-l-2 border-rose-400 text-xs">
+<code class="text-rose-300">:crit, f1, after p1, 5d</code>
+<span class="opacity-70 pl-2">關鍵任務 — 紅色標記</span>
+</div>
+
+</div>
+
+</div>
+
+<div class="min-w-0 overflow-hidden p-4 rounded-lg border border-amber-500/30 bg-amber-500/[0.03] flex items-center justify-center">
+
+```mermaid {scale: 0.55}
+gantt
+  title 新人 Onboarding
+  dateFormat YYYY-MM-DD
+  section Week 1
+    環境設定 :done, s1, 2026-05-04, 2d
+    團隊介紹 :active, s2, after s1, 3d
+  section Week 2
+    第一個 PR :p1, after s2, 5d
+  section Week 3
+    獨立 Feature :crit, f1, after p1, 5d
+```
+
+</div>
+
+</div>
+
+---
 layout: section
 class: text-left
 ---
@@ -819,6 +1010,83 @@ mindmap
 
 ---
 
+# 實戰範例：求職準備心智圖
+
+<div class="text-sm opacity-60 pb-3">左邊程式碼按空白鍵逐層展開，右邊是實際心智圖</div>
+
+<div class="grid grid-cols-2 gap-6">
+
+<div>
+
+```yaml {all|1|2|3-5|6-9|10-12|all}
+mindmap
+  root((求職準備))
+    履歷
+      個人簡介
+      專案成果
+    技術
+      Go
+      TypeScript
+      系統設計
+    面試
+      白板題
+      行為題
+```
+
+<div class="pt-3 min-h-[9rem]">
+
+<div v-click="[1,2]" class="p-2 rounded-lg bg-white/[0.03] border-l-2 border-purple-400 text-xs">
+<code class="text-purple-300">mindmap</code>
+<span class="opacity-70 pl-2">宣告心智圖</span>
+</div>
+
+<div v-click="[2,3]" class="p-2 rounded-lg bg-white/[0.03] border-l-2 border-teal-400 text-xs">
+<code class="text-teal-300">root((求職準備))</code>
+<span class="opacity-70 pl-2">中心節點 — 圓形</span>
+</div>
+
+<div v-click="[3,4]" class="p-2 rounded-lg bg-white/[0.03] border-l-2 border-sky-400 text-xs">
+<code class="text-sky-300">&nbsp;&nbsp;&nbsp;&nbsp;履歷 → 個人簡介 / 專案成果</code>
+<span class="opacity-70 pl-2">第一分支（縮排 4 空格 = 第二層）</span>
+</div>
+
+<div v-click="[4,5]" class="p-2 rounded-lg bg-white/[0.03] border-l-2 border-emerald-400 text-xs">
+<code class="text-emerald-300">技術 → Go / TS / 系統設計</code>
+<span class="opacity-70 pl-2">第二分支，3 個子節點</span>
+</div>
+
+<div v-click="[5,6]" class="p-2 rounded-lg bg-white/[0.03] border-l-2 border-amber-400 text-xs">
+<code class="text-amber-300">面試 → 白板題 / 行為題</code>
+<span class="opacity-70 pl-2">第三分支 — 縮排決定一切</span>
+</div>
+
+</div>
+
+</div>
+
+<div class="min-w-0 overflow-hidden p-4 rounded-lg border border-purple-500/30 bg-purple-500/[0.03] flex items-center justify-center">
+
+```mermaid {scale: 0.6}
+mindmap
+  root((求職準備))
+    履歷
+      個人簡介
+      專案成果
+    技術
+      Go
+      TypeScript
+      系統設計
+    面試
+      白板題
+      行為題
+```
+
+</div>
+
+</div>
+
+---
+
 # Pie 圓餅圖
 
 <div class="text-sm opacity-60 pb-3">最簡單的圖 — 一行標題 + 分類資料</div>
@@ -860,6 +1128,66 @@ Mermaid 會<b>自動算百分比</b>
 加 <code>showData</code> 顯示實際數字：<br>
 <code>pie showData title ...</code>
 </div>
+
+</div>
+
+</div>
+
+---
+
+# 實戰範例：2026 年 4 月家庭開銷
+
+<div class="text-sm opacity-60 pb-3">左邊程式碼按空白鍵逐行解說，右邊是實際圓餅圖</div>
+
+<div class="grid grid-cols-2 gap-6">
+
+<div>
+
+```yaml {all|1|2|3|4|5|6|all}
+pie showData title 2026 年 4 月家庭開銷
+  "房租" : 25000
+  "伙食" : 12000
+  "交通" : 5000
+  "娛樂" : 3000
+  "儲蓄" : 15000
+```
+
+<div class="pt-3 min-h-[9rem]">
+
+<div v-click="[1,2]" class="p-2 rounded-lg bg-white/[0.03] border-l-2 border-rose-400 text-xs">
+<code class="text-rose-300">pie showData title ...</code>
+<span class="opacity-70 pl-2">宣告圓餅圖，<code>showData</code> 會同時顯示數字</span>
+</div>
+
+<div v-click="[2,3]" class="p-2 rounded-lg bg-white/[0.03] border-l-2 border-amber-400 text-xs">
+<code class="text-amber-300">"房租" : 25000</code>
+<span class="opacity-70 pl-2">最大開銷 — 自動成為最大扇形</span>
+</div>
+
+<div v-click="[3,6]" class="p-2 rounded-lg bg-white/[0.03] border-l-2 border-sky-400 text-xs">
+<code class="text-sky-300">"伙食" / "交通" / "娛樂"</code>
+<span class="opacity-70 pl-2">依序加入其他類別</span>
+</div>
+
+<div v-click="[6,7]" class="p-2 rounded-lg bg-white/[0.03] border-l-2 border-emerald-400 text-xs">
+<code class="text-emerald-300">"儲蓄" : 15000</code>
+<span class="opacity-70 pl-2">Mermaid 會<b>自動算百分比</b>，不用自己換算</span>
+</div>
+
+</div>
+
+</div>
+
+<div class="min-w-0 overflow-hidden p-4 rounded-lg border border-rose-500/30 bg-rose-500/[0.03] flex items-center justify-center">
+
+```mermaid {scale: 0.8}
+pie showData title 2026 年 4 月家庭開銷
+  "房租" : 25000
+  "伙食" : 12000
+  "交通" : 5000
+  "娛樂" : 3000
+  "儲蓄" : 15000
+```
 
 </div>
 
